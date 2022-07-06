@@ -1,0 +1,41 @@
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<mat-card class="liquidity-form-container mx-auto">
+  <form [formGroup]="burnTokenAddressInputFormGroup" class="form-container">
+    <mat-form-field appearance="outline" style="width: 100% !important;">
+      <mat-label>Token address</mat-label>
+      <input #burnTokenAddress (keyup)="burnTokenInputKeyUp()" matInput maxlength="42"
+        placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9" formControlName="burnTokenAddress">
+      <mat-error
+        *ngIf="!burnTokenAddressInputFormGroup.controls['burnTokenAddress'].valid && burnTokenAddressInputFormGroup.controls['burnTokenAddress'].touched">
+        This field required
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <mat-card class="lock-liquidity-form-container">
+    <div class="input-label">
+      <span style="font-weight: bold">TOKEN {{burnTokenForm?.tokenName}}</span>
+      <span style="font-weight: bold">{{tokenBalance}}</span>
+    </div>
+    <br>
+    <div class="input-label">
+      <input [(ngModel)]="burnTokenForm.amount" appTwoDigitDecimaNumber matInput maxlength="16" placeholder="e.g. 1000">
+      <button color="primary" type="button" mat-raised-button>
+        Max
+      </button>
+    </div>
+    <br>
+    <mat-slider [disabled]="!burnTokenAddressInputFormGroup.controls['burnTokenAddress'].valid" min="0" step="1"
+      thumbLabel (click)="onClickEvent(burnTokenAddressInputFormGroup.controls.burnTokenAddress.value)"
+      (input)="onSlideBurn($event)" [displayWith]="formatLabel" max="100">
+    </mat-slider>
+  </mat-card>
+  <br>
+  <div class="liquidity-form-buttons-container">
+    <button class="burnButton" id="burnButton" color="primary" type="button" mat-raised-button
+      (click)="openBurnTokensDialog()">
+      Burn
+    </button>
+  </div>
+</mat-card>

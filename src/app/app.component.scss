@@ -1,0 +1,184 @@
+mat-sidenav {
+  border-radius: 16px !important;
+  margin-left: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+:host ::ng-deep input::placeholder {
+  color: white !important;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.img-bsc-logo {
+  width: 200px;
+}
+
+.connect-button {
+  background: linear-gradient(0deg, rgba(178, 62, 206, 1) 0%, rgba(255, 21, 229, 1) 100%);
+  border-radius: 15px;
+  margin: 0;
+  width: 150px;
+  line-height: 36px;
+  overflow: visible;
+  transform: translate3d(0, 0, 0);
+  transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+.connect-button:hover {
+  background: linear-gradient(0deg, #723980 0%, #ae4da4 100%);
+}
+:host ::ng-deep .mat-toolbar {
+  height: 10vh;
+  color: white;
+}
+:host ::ng-deep .mat-toolbar-row {
+  height: 100%;
+}
+
+mat-label {
+}
+fa-icon {
+  margin-right: 2vh;
+}
+::ng-deep .mat-tab-label {
+  background: #ffffff !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* active tab */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  background: linear-gradient(-45deg, #ee7752, #ff79ab, #47cfff, #23d5ab) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Styles for the ink bar */
+:host ::ng-deep .mat-ink-bar {
+  background: linear-gradient(-45deg, #ee7752, #ff79ab, #47cfff, #23d5ab) !important;
+}
+
+::ng-deep .mat-tab-labels {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+:host ::ng-deep .mat-card {
+  color: white;
+}
+
+.mat-sidenav-container {
+  background-color: rgba(255, 255, 255, 0);
+  height: 90vh;
+}
+mat-sidenav {
+  background-color: rgba(17, 25, 40, 0.51);
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  border-right: 1px solid rgba(255, 255, 255, 0.125);
+  width: 240px !important;
+  min-width: 240px !important;
+}
+.create-token-container,
+.liquidity-form-container {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.7),            /* outer white */
+    -10px 0 60px rgba(255, 0, 255, 0.7),        /* outer left magenta */
+    10px 0 60px rgba(0, 255, 255, 0.7);         /* outer right cyan */
+}
+:host ::ng-deep .mat-nav-list {
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+:host ::ng-deep .mat-list-item.active .mat-list-item-content {
+  color: #ff29ff;
+  border-bottom: 1px solid white;
+}
+:host ::ng-deep .mat-list-item-content {
+  color: white;
+  font-size: 1.2rem;
+}
+:host ::ng-deep .mat-list-item-content:hover {
+  color: #ff29ff;
+  background-color: #282727;
+  font-weight: bold;
+}
+:host ::ng-deep .mat-slider-track-background {
+  background-color: #ffffff66;
+}
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+}
+::ng-deep .mat-button-wrapper {
+  color: white !important;
+}
+::ng-deep .mat-raised-button.mat-primary:hover {
+  background-color: #35407a;
+}
+::ng-deep .mat-raised-button.mat-primary:disabled:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+:host ::ng-deep .soon-advise {
+  margin-left: 1vh;
+  font-weight: 900;
+  color: #23d5ab;
+  font-size: 0.9rem;
+  margin-top: 0.5vw;
+}
+// :host ::ng-deep .mat-form-field-outline {
+//   border:1px solid white;
+//   border-radius: 5px;
+// }
+
+@media screen and (max-width: 512px) {
+  :host ::ng-deep {
+    .mat-tab-label {
+      font-size: 0.9rem;
+    }
+    .mat-tab-header-pagination {
+      background: rgb(255 255 255 / 41%);
+      box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+      backdrop-filter: blur(20px);
+    }
+    .mat-toolbar-row .mat-focus-indicator {
+      padding: 0 8px;
+      font-size: 12px;
+    }
+    .lock-liquidity-form-container {
+      min-height: 250px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .percentButton {
+      width: 20%;
+    }
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  .mobile-hidden {
+    display: none;
+  }
+  .typewriter {
+    min-height: 250px;
+  }
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (min-width: 769px) {
+  footer {
+    bottom: 0px;
+  }
+  :host ::ng-deep .mat-slider-horizontal {
+    width: 80%;
+    margin-left: 10%;
+  }
+}

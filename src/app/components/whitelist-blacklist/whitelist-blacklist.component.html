@@ -1,0 +1,125 @@
+<mat-card class="liquidity-form-container coming-soon">
+  <h3>Coming Soon</h3>
+  <!-- <mat-card class="lock-liquidity-form-container">
+    <h3>WHITELIST</h3>
+    <form [formGroup]="listingTokenAddressInputFormGroup" class="form-container">
+      <mat-form-field appearance="outline" style="width: 100% !important;">
+        <mat-label>Token address</mat-label>
+        <input (keyup)="onWhitelistTokenAddressKeyup()" matInput maxlength="42"
+               placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+               formControlName="tokenAddress">
+        <mat-hint align="end">{{listingTokenAddressInputFormGroup.controls['tokenAddress'].value?.length || 0}}
+          /42
+        </mat-hint>
+        <mat-error
+          *ngIf="!whitelistInputFormGroup.controls['whitelistAddress'].valid && whitelistInputFormGroup.controls['whitelistAddress'].touched">
+          This field required
+        </mat-error>
+        <mat-hint class="mat-hints">
+          <mat-icon>info</mat-icon>
+          Enter the token address
+        </mat-hint>
+      </mat-form-field>
+    </form>
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <form [formGroup]="whitelistInputFormGroup" class="form-container">
+            <mat-form-field appearance="outline" style="width: 100% !important;">
+              <mat-label>Wallet address</mat-label>
+              <input matInput maxlength="42"
+                     placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+                     formControlName="whitelistAddress">
+              <mat-hint
+                align="end">{{whitelistInputFormGroup.controls['whitelistAddress'].value?.length || 0}}
+                /42
+              </mat-hint>
+              <mat-error
+                *ngIf="!whitelistInputFormGroup.controls['whitelistAddress'].valid && whitelistInputFormGroup.controls['whitelistAddress'].touched">
+                This field required
+              </mat-error>
+              <mat-hint class="mat-hints">
+                <mat-icon>info</mat-icon>
+                Enter the wallet address
+              </mat-hint>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="col-sm">
+          <button class="whitelistButton" id="whitelistButton" color="primary" type="button" mat-raised-button
+                  (click)="addWhitelist()">
+          
+            Add to Whitelist
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <mat-card *ngFor="let element of whitelistContent" class="whitelist-form-container lock-liquidity-form-container"
+              style="margin-top: 15px">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <span style="font-weight: bold">{{element}}</span>
+          </div>
+          <div class="col-sm">
+            <button (click)="deleteFromWhitelist(element)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </mat-card>
+  <div style="height: 15px"></div>
+
+  <mat-card class="lock-liquidity-form-container">
+    <h3>BLACKLIST</h3>
+    <div style="height: 15px"></div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <form [formGroup]="blacklistInputFormGroup" class="form-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Wallet address</mat-label>
+              <input matInput maxlength="42"
+                     placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+                     formControlName="blacklistAddress">
+              <mat-hint
+                align="end">{{blacklistInputFormGroup.controls['blacklistAddress'].value?.length || 0}}
+                /42
+              </mat-hint>
+              <mat-error
+                *ngIf="!blacklistInputFormGroup.controls['blacklistAddress'].valid && blacklistInputFormGroup.controls['blacklistAddress'].touched">
+                This field required
+              </mat-error>
+              <mat-hint class="mat-hints">
+                <mat-icon>info</mat-icon>
+                Enter the wallet address
+              </mat-hint>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="col-sm">
+          <button class="blacklistButton" id="blacklistButton" color="primary" type="button" mat-raised-button
+                  (click)="addBlacklist()">
+        
+            Add to blacklist
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <mat-card *ngFor="let element of blacklistContent" class="whitelist-form-container  lock-liquidity-form-container"
+              style="margin-top: 15px">
+      <div class="input-label">
+        <span style="font-weight: bold">{{element}}</span>
+        <button (click)="deleteFromBlacklist(element)">Delete</button>
+      </div>
+    </mat-card>
+  </mat-card> -->
+</mat-card>

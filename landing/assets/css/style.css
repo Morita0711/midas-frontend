@@ -1,0 +1,477 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body,
+html {
+  background: linear-gradient(
+    180deg,
+    #14003d,
+    #100138,
+    #0d0233,
+    #0b022d,
+    #080227,
+    #050221,
+    #03021b,
+    #000114
+  );
+  font-family: "Montserrat-Regular", sans-serif;
+  color: #ffffffc4;
+  font-size: 1.2rem;
+}
+h1,
+h2,
+h3,
+h4,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0 !important;
+}
+a,
+a:hover {
+  text-decoration: none;
+  color: #ffffffc4 !important;
+}
+.navbar {
+  padding: 0 55px;
+  margin: 0px 10px;
+  height: 15vh;
+}
+.navbar a {
+  font-size: 1rem;
+}
+.scroll-header {
+  height: 10vh;
+  padding: 0 135px;
+  background: rgb(50, 24, 132);
+  background: linear-gradient(
+    345deg,
+    rgb(50 24 132 / 60%) 0%,
+    rgb(0 0 0 / 60%) 100%
+  );
+  margin: 0;
+  color: #ff29ff;
+}
+.navbar-collapse {
+  justify-content: end;
+}
+.navbar-brand,
+.navbar-brand:hover {
+  color: #fff;
+}
+ul.navbar-nav {
+  justify-content: space-around;
+  width: 40%;
+}
+.launch-app-btn {
+  background: rgb(178, 62, 206);
+  background: linear-gradient(
+    0deg,
+    rgba(178, 62, 206, 0.61) 0%,
+    rgba(255, 21, 229, 0.61) 100%
+  );
+  border-radius: 15px;
+  margin: 0;
+  width: 200px;
+  line-height: 36px;
+  overflow: visible;
+  transform: translate3d(0, 0, 0);
+  transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+.home-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10vw 0 7vw;
+}
+#home h1 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+#home h2 {
+  font-size: 3.5rem;
+  color: #ff29ff;
+}
+.separator {
+  height: 10px;
+  border-radius: 15px;
+  width: 30%;
+  margin: 3rem 0;
+}
+#home .coin {
+  width: 70%;
+  margin-top: 11vh;
+  margin-left: 5vw;
+  animation: MoveUpDown 4s linear infinite;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+#home p {
+  font-size: 1.8rem;
+}
+#home a.btn {
+  background: rgb(178, 62, 206);
+  background: linear-gradient(
+    0deg,
+    rgba(178, 62, 206, 1) 0%,
+    rgba(255, 21, 229, 1) 100%
+  );
+  width: 30%;
+  height: 6vh;
+  border-radius: 25px;
+  color: #ffffffc4;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1vh;
+}
+#about h2 {
+  margin-bottom: 3vh;
+}
+#chains .chains {
+  border-radius: 40px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    255deg,
+    rgba(255, 255, 255, 1) 8%,
+    rgba(218, 218, 218, 1) 55%
+  );
+}
+#chains h2 {
+  margin-bottom: 7vh;
+}
+
+footer {
+  width: 100%;
+  background-color: #222225;
+}
+footer div {
+  padding: 2vh;
+}
+footer p {
+  color: #535353ad;
+}
+.rounded-circle {
+  background: linear-gradient(
+    0deg,
+    rgba(178, 62, 206, 1) 0%,
+    rgba(255, 21, 229, 1) 100%
+  );
+}
+.stepper .line {
+  width: 2px;
+  background-color: lightgrey !important;
+}
+.stepper .lead {
+  font-size: 1.1rem;
+}
+.pl-3 {
+  padding-left: 1rem;
+}
+.why-cards > div > div > div,
+.what-cards > div > div > div > div > div {
+  position: relative;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  background: linear-gradient(
+    126.7deg,
+    hsla(0, 0%, 100%, 0.08) 28.7%,
+    hsla(0, 0%, 100%, 0.08)
+  );
+  background: linear-gradient(
+    126.7deg,
+    hsla(0, 0%, 100%, 0.08) 28.7%,
+    hsla(0, 0%, 100%, 0),
+    hsla(0, 0%, 100%, 0.08)
+  );
+  padding: 3vw;
+  text-align: center;
+}
+.why-cards > div > div,
+.what-cards > div > div > div > div {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+.why-cards > div > div > div::before,
+.what-cards > div > div > div > div > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.7;
+  background: transparent;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1.5px white;
+  box-shadow: inset 0 0 0 1.5px white;
+  -webkit-mask-image: radial-gradient(
+      at -31%,
+      at -58%,
+      rgba(0, 0, 0, 0.5) 34%,
+      transparent 60%
+    ),
+    linear-gradient(270deg, rgba(0, 0, 0, 0.2) 0, transparent 13%),
+    linear-gradient(hsl(0deg 0% 0%/5%), hsl(0deg 0% 0%/5%));
+  mask-image: radial-gradient(
+      at -31%,
+      at -58%,
+      rgba(0, 0, 0, 0.5) 34%,
+      transparent 60%
+    ),
+    linear-gradient(270deg, rgba(0, 0, 0, 0.2) 0, transparent 13%),
+    linear-gradient(hsl(0deg 0% 0%/5%), hsl(0deg 0% 0%/5%));
+  -webkit-mask-image: radial-gradient(
+      at -31% -58%,
+      rgba(0, 0, 0, 0.5) 34%,
+      transparent 60%
+    ),
+    linear-gradient(270deg, rgba(0, 0, 0, 0.2) 0, transparent 13%),
+    linear-gradient(hsl(0deg 0% 0%/5%), hsl(0deg 0% 0%/5%));
+  mask-image: radial-gradient(
+      at -31% -58%,
+      rgba(0, 0, 0, 0.5) 34%,
+      transparent 60%
+    ),
+    linear-gradient(270deg, rgba(0, 0, 0, 0.2) 0, transparent 13%),
+    linear-gradient(hsl(0deg 0% 0%/5%), hsl(0deg 0% 0%/5%));
+}
+img.why-images {
+  border: 1px solid;
+  padding: 0.5vh;
+  border-radius: 9px;
+  background-color: #893d8a5c;
+}
+
+.what-animation {
+  animation-duration: 3s;
+  animation-name: fadeWhat;
+}
+
+@keyframes fadeWhat {
+  from { opacity   : 0; }
+  to   { opacity   : 1; }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    width: 100%;
+  }
+  body,
+  html {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 11%, rgba(47,40,113,1) 71%);
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  h2 {
+    padding: 3rem 0;
+  }
+  .mt-5 {
+    margin-top: 0 !important;
+  }
+  .mobile-hidden {
+    display: none;
+  }
+  #home {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  #home {
+    background-image: url("../img/home-mobile.png");
+  }
+  #home a.btn {
+    width: 50%;
+    height: 7vh;
+  }
+  #home .coin {
+    margin-top: -35vh;
+    margin-left: 13vw;
+  }
+
+  .navbar {
+    padding: 0;
+    margin: 0;
+  }
+  .home-text {
+    justify-content: center;
+    padding: 0 15vw 0 15vw;
+    text-align: center;
+    align-items: center;
+  }
+  #home p {
+    font-size: 1.2rem;
+  }
+  #home button.btn {
+    width: 60%;
+    height: 7vh;
+    font-size: 1rem;
+    margin-top: 2vh;
+  }
+  #home .container-fluid > div.row {
+    height: 100vh;
+  }
+  #home .home-text {
+    height: 75%;
+  }
+  #chains h2 {
+    margin-bottom: 2vh;
+  }
+  .mobile-m-cards {
+    padding: 5vh !important;
+  }
+  .what-text {
+    justify-content: flex-start;
+    margin-top: 2vh;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  .navbar-toggler {
+    width: 50px;
+    padding: 0.2rem 0.4rem;
+  }
+  #navbar {
+    align-items: initial;
+  }
+  .launch-app-btn {
+    width: 150px;
+    line-height: 25px;
+  }
+  .navbar .container-fluid {
+    background-color: #231d56c7;
+  }
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 3vh;
+  }
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 40px;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 80px;
+    }
+  }
+  #home .home-text {
+    padding: 10vh 10vw 2vh 7vw !important;
+  }
+  .navbar-toggler-icon img {
+    width: 50px;
+  }
+}
+@media screen and (min-width: 991px) {
+  body,
+  html {
+    height: 100%;
+  }
+  .screen-hidden {
+    display: none;
+  }
+  #home,
+  #contact,
+  #about,
+  #chains {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  #home {
+    background-image: url("../img/home.jpg");
+  }
+  #contact {
+    background-image: url("../img/contact.png");
+  }
+  #about {
+    background-image: url("../img/about.png");
+  }
+  #chains {
+    background-image: url("../img/chains.png");
+  }
+  .home-text {
+    padding: 0 2vw 0 3vw;
+  }
+  .down-images img {
+    width: 90%;
+  }
+  .launch-app-btn {
+    width: 175px;
+    line-height: 25px;
+  }
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 80px;
+    }
+  }
+}
+@media screen and (min-width: 1201px) {
+  body,
+  html {
+    height: 100%;
+  }
+  .screen-hidden {
+    display: none;
+  }
+  .home-text {
+    height: 100vh;
+  }
+  #home,
+  #contact,
+  #about,
+  #chains {
+    height: 100vh;
+  }
+  #about h1 {
+    font-size: 8vw;
+  }
+  #about p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+  #contact p {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 80px;
+    }
+  }
+}

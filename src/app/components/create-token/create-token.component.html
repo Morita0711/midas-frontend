@@ -1,0 +1,415 @@
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<mat-card class="create-token-container mx-auto">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Token Name <span style="color: #ff3030">*</span></mat-label>
+      <input matInput maxlength="30" placeholder="e.g. My Token" formControlName="tokenName">
+      <mat-hint class="mat-hints">
+        <mat-icon>info</mat-icon>
+        Name of your token
+      </mat-hint>
+      <mat-error *ngIf="!formGroup.controls['tokenName'].valid && formGroup.controls['tokenName'].touched">
+        Token name is required
+      </mat-error>
+    </mat-form-field>
+    <div style="height: 15px"></div>
+    <mat-form-field appearance="outline">
+      <mat-label>Token Symbol <span style="color: #ff3030">*</span></mat-label>
+      <input [disabled]="account === undefined" matInput maxlength="10" placeholder="e.g. MTKN"
+        formControlName="tokenSymbol">
+      <mat-hint class="mat-hints">
+        <mat-icon>info</mat-icon>
+        Symbol of your token
+      </mat-hint>
+      <mat-error *ngIf="!formGroup.controls['tokenSymbol'].valid && formGroup.controls['tokenSymbol'].touched">
+        This field required
+      </mat-error>
+    </mat-form-field>
+    <div style="height: 15px"></div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Token Supply <span style="color: #ff3030">*</span></mat-label>
+      <input matInput appTwoDigitDecimaNumber maxlength="16" placeholder="e.g. 100000000000"
+        formControlName="tokenSupply" (keydown)="numberFieldKeydown($event, 1000000000000000, 'tokenSupply')">
+      <mat-hint class="mat-hints">
+        <mat-icon>info</mat-icon>
+        Enter the total supply
+      </mat-hint>
+      <mat-error *ngIf="!formGroup.controls['tokenSupply'].valid && formGroup.controls['tokenSupply'].touched">
+        This field required
+      </mat-error>
+    </mat-form-field>
+    <div style="height: 15px"></div>
+    <!-- <div style="margin: auto">
+      <mat-slide-toggle (change)="onSwitchChange()"><span class="mx-auto" style="color: white">Show advanced
+          settings</span></mat-slide-toggle>
+    </div>
+    <div style="height: 15px"></div>
+
+    <ng-container *ngIf="showAdvancedSettings">
+      <mat-form-field appearance="outline">
+        <mat-label>Decimals <span style="color: #ff3030">*</span></mat-label>
+        <input matInput maxlength="2" placeholder="e.g. 18" formControlName="tokenDecimals"
+          (keyup)="numberFieldKeyup($event, 18, 'tokenDecimals')"
+          (keydown)="numberFieldKeydown($event, 18, 'tokenDecimals')">
+        <mat-hint class="mat-hints">
+          <mat-icon>info</mat-icon>
+          Enter the decimal precision (1-18)
+        </mat-hint>
+        <mat-error *ngIf="!formGroup.controls['tokenDecimals'].valid && formGroup.controls['tokenDecimals'].touched">
+          This field required
+        </mat-error>
+      </mat-form-field>
+
+      <div style="height: 15px"></div>
+      <mat-slide-toggle (change)="onSwitchChangeShowCustomBuySellTransferSettings()">
+        <span class="mx-auto" style="color: white">Enable custom taxes on buys, sells or transfers</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomBuySellTransferSettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Buy taxes percent <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 1" formControlName="tokenDecimals"
+            (keyup)="numberFieldKeyup($event, 2, 'tokenDecimals')"
+            (keydown)="numberFieldKeydown($event, 2, 'tokenDecimals')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter buy taxes percent
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['tokenDecimals'].valid && formGroup.controls['tokenDecimals'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Sell taxes percent <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 3" formControlName="tokenDecimals"
+            (keyup)="numberFieldKeyup($event, 2, 'tokenDecimals')"
+            (keydown)="numberFieldKeydown($event, 2, 'tokenDecimals')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter sell taxes percent
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['tokenDecimals'].valid && formGroup.controls['tokenDecimals'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Transfer taxes percent <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 1" formControlName="tokenDecimals"
+            (keyup)="numberFieldKeyup($event, 2, 'tokenDecimals')"
+            (keydown)="numberFieldKeydown($event, 2, 'tokenDecimals')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter transfer taxes percent
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['tokenDecimals'].valid && formGroup.controls['tokenDecimals'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Tx Fee % to Holders</mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="TxFeePercentToHolders"
+            (keyup)="numberFieldKeyup($event, 2, 'TxFeePercentToHolders')"
+            (keydown)="numberFieldKeydown($event, 2, 'TxFeePercentToHolders')">
+          <mat-error
+            *ngIf="!formGroup.controls['TxFeePercentToHolders'].valid && formGroup.controls['TxFeePercentToHolders'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be distributed to holders (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Tx Fee % to LP</mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="TxFeePercentToLP"
+            (keyup)="numberFieldKeyup($event, 2, 'TxFeePercentToLP')"
+            (keydown)="numberFieldKeydown($event, 2, 'TxFeePercentToLP')">
+          <mat-error
+            *ngIf="!formGroup.controls['TxFeePercentToLP'].valid && formGroup.controls['TxFeePercentToLP'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be used to add liquidity (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Tx Fee % Burned</mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="TxFeePercentToBurned"
+            (keyup)="numberFieldKeyup($event, 2, 'TxFeePercentToBurned')"
+            (keydown)="numberFieldKeydown($event, 2, 'TxFeePercentToBurned')">
+          <mat-error
+            *ngIf="!formGroup.controls['TxFeePercentToBurned'].valid && formGroup.controls['TxFeePercentToBurned'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be burned (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Tx Fee % to Wallet</mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="TxFeePercentToWallet"
+            (keyup)="numberFieldKeyup($event, 2, 'TxFeePercentToWallet')"
+            (keydown)="numberFieldKeydown($event, 2, 'TxFeePercentToWallet')">
+          <mat-error
+            *ngIf="!formGroup.controls['TxFeePercentToWallet'].valid && formGroup.controls['TxFeePercentToWallet'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be sent to a marketing or charity wallet (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Wallet address for above Tx Fee</mat-label>
+          <input matInput maxlength="42" placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+            formControlName="FeeReceiverWallet">
+          <mat-error
+            *ngIf="!formGroup.controls['FeeReceiverWallet'].valid && formGroup.controls['FeeReceiverWallet'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the wallet address
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+      </div>
+      <div style="height: 15px"></div>
+
+      <div style="height: 15px"></div>
+      <mat-slide-toggle (change)="onSwitchChangeGasPriceLimitSettings()">
+        <span class="mx-auto" style="color: white">Enable Anti-Bot Gas Price Limit</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomGasPriceLimitSettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Max Gas Price Limit <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 1500000" formControlName="maxGasPriceLimit"
+            (keyup)="numberFieldKeyup($event, 18, 'maxGasPriceLimit')"
+            (keydown)="numberFieldKeydown($event, 18, 'maxGasPriceLimit')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter gas price
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['maxGasPriceLimit'].valid && formGroup.controls['maxGasPriceLimit'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+      </div>
+      <div style="height: 15px"></div>
+
+      <div style="height: 15px"></div>
+      <mat-slide-toggle (change)="onSwitchDelayTxSettings()">
+        <span class="mx-auto" style="color: white">Enable Anti-Bot Delay Tx</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomDelayTxSettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Anti-Bot Delay Between Tx <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 3" formControlName="timeDelayBetweenTx"
+            (keyup)="numberFieldKeyup($event, 18, 'timeDelayBetweenTx')"
+            (keydown)="numberFieldKeydown($event, 18, 'timeDelayBetweenTx')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter delay time in seconds
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['timeDelayBetweenTx'].valid && formGroup.controls['timeDelayBetweenTx'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Initial Delay After Trading Active <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 3600" formControlName="totalDelayTime"
+            (keyup)="numberFieldKeyup($event, 18, 'totalDelayTime')"
+            (keydown)="numberFieldKeydown($event, 18, 'totalDelayTime')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter delay time in seconds
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['totalDelayTime'].valid && formGroup.controls['totalDelayTime'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+      </div>
+      <div style="height: 15px"></div>
+
+      <mat-slide-toggle (change)="onSwitchChangeBuybackSettings()">
+        <span class="mx-auto" style="color: white">Enable Buyback</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomBuybackSettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Buyback taxes percent <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="buyBackFee"
+            (keyup)="numberFieldKeyup($event, 10, 'buyBackFee')"
+            (keydown)="numberFieldKeydown($event, 10, 'buyBackFee')">
+          <mat-error
+            *ngIf="!formGroup.controls['buyBackFee'].valid && formGroup.controls['buyBackFee'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be used to buyback tokens on sell (Hyper-deflation) (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Buyback threshold <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 1000" formControlName="swapThreshold"
+            (keyup)="numberFieldKeyup($event, 18, 'swapThreshold')"
+            (keydown)="numberFieldKeydown($event, 18, 'swapThreshold')">
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter Buyback threshold
+          </mat-hint>
+          <mat-error *ngIf="!formGroup.controls['swapThreshold'].valid && formGroup.controls['swapThreshold'].touched">
+            This field required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div style="height: 15px"></div>
+
+      <mat-slide-toggle (change)="onSwitchChangeAutoInjectSettings()">
+        <span class="mx-auto" style="color: white">Enable auto inject liquidity</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomAutoInjectSettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Enable contract swap <span style="color: #ff3030">*</span></mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="contractSwapEnabled"
+            (keyup)="numberFieldKeyup($event, 10, 'contractSwapEnabled')"
+            (keydown)="numberFieldKeydown($event, 10, 'contractSwapEnabled')">
+          <mat-error
+            *ngIf="!formGroup.controls['contractSwapEnabled'].valid && formGroup.controls['contractSwapEnabled'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be used to buyback tokens on sell (Hyper-deflation) (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+      </div>
+      <div style="height: 15px"></div>
+
+      <mat-slide-toggle (change)="onSwitchChangeWhaleTaxes()">
+        <span class="mx-auto" style="color: white">Anti-Whale taxes</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomWhaleFeeSettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Max Wallet % :</mat-label>
+          <input matInput maxlength="3" placeholder="e.g. 5" formControlName="MaxWalletPercent"
+            (keyup)="numberFieldKeyup($event, 100, 'MaxWalletPercent')"
+            (keydown)="numberFieldKeydown($event, 100, 'MaxWalletPercent')">
+          <mat-error
+            *ngIf="!formGroup.controls['MaxWalletPercent'].valid && formGroup.controls['MaxWalletPercent'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the maximum supply % that a wallet can hold (1-100). Anti-Whale mechanics
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Max Transaction %</mat-label>
+          <input matInput maxlength="3" placeholder="e.g. 0.1" formControlName="MaxTxPercent"
+            (keyup)="numberFieldKeyup($event, 100, 'MaxTxPercent')"
+            (keydown)="numberFieldKeydown($event, 100, 'MaxTxPercent')">
+          <mat-error *ngIf="!formGroup.controls['MaxTxPercent'].valid && formGroup.controls['MaxTxPercent'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the maximum transaction allowed as % of supply (1-100). Anti-Whale mechanics
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+      </div>
+      <div style="height: 15px"></div>
+      <mat-slide-toggle (change)="onSwitchChangeCharitySettings()">
+        <span class="mx-auto" style="color: white">Enable Charity Wallet</span>
+      </mat-slide-toggle>
+      <div style="height: 15px"></div>
+      <div class="buySellTransferContainer" *ngIf="showCustomCharitySettings">
+        <div style="height: 15px"></div>
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Tx Fee % to Charity Wallet</mat-label>
+          <input matInput maxlength="2" placeholder="e.g. 5" formControlName="TxFeePercentToCharity"
+            (keyup)="numberFieldKeyup($event, 10, 'TxFeePercentToCharity')"
+            (keydown)="numberFieldKeydown($event, 10, 'TxFeePercentToCharity')">
+          <mat-error
+            *ngIf="!formGroup.controls['TxFeePercentToCharity'].valid && formGroup.controls['TxFeePercentToCharity'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the transaction fee % that would be sent to a marketing or charity wallet (0-10)
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+
+        <mat-form-field appearance="outline" class="width-field-95">
+          <mat-label>Charity Wallet address</mat-label>
+          <input matInput maxlength="42" placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+            formControlName="CharityWallet">
+          <mat-error
+            *ngIf="!formGroup.controls['CharityWallet'].valid && formGroup.controls['CharityWallet'].touched">
+            This field required
+          </mat-error>
+          <mat-hint class="mat-hints">
+            <mat-icon>info</mat-icon>
+            Enter the charity wallet address
+          </mat-hint>
+        </mat-form-field>
+        <div style="height: 15px"></div>
+      </div>
+
+
+
+    </ng-container> -->
+    <div style="height: 15px"></div>
+
+    <!-- <app-service-token-payment-selector style="margin: auto" (selectedTokenAddres)="onChangePaymentToken($event)"></app-service-token-payment-selector> -->
+
+    <div style="width: 100%">
+      <button class="create-tokenButton" [disabled]="isLoading" id="submit-button" color="primary" type="submit"
+        mat-raised-button><span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+
+        <span class="button-label">{{createButtonLabel}}</span>
+      </button>
+    </div>
+  </form>
+</mat-card>

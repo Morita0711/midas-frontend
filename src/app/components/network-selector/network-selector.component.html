@@ -1,0 +1,13 @@
+<mat-form-field appearance="fill">
+  <mat-label>Network</mat-label>
+  <mat-select #matRef (valueChange)="networkSelectChange($event)" [(value)]="currentNetworkIndex" panelClass="my-select-panel-class">
+    <mat-select-trigger>
+      <img style="width: 25px; height: 25px" [src]="networks[currentNetworkIndex].image" />
+      <span style="margin-left: 5px !important; font-weight: bold; color: white">{{ networks[currentNetworkIndex].name }}</span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let network of networks" [value]="network.index">
+      <img style="width: 25px; height: 25px" [src]="network.image" />
+      <span style="margin-left: 5px !important; font-weight: bold">{{ network.name }}</span>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

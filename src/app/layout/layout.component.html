@@ -1,0 +1,52 @@
+<mat-toolbar class="mat-custom-nav">
+  <mat-toolbar-row>
+    <span><img loading="lazy" src="../assets/ORIGINAL.png" width="230px" height="65px" alt="logo" class="logo" /></span>
+    <span class="example-spacer"></span>
+    <!-- <span class="h4"><img src="assets/bsc-logo.webp" class="img-bsc-logo mt-2" /> </span> -->
+    <app-network-selector (selectedNetwork)="onNetworkChanged($event)" class="networkSelector"></app-network-selector>
+    <ng-container *ngIf="account$ | async as account">
+      <button class="connect-button" color="primary" type="button" mat-raised-button>{{ account | parseAccount }}</button>
+    </ng-container>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-sidenav-container">
+  <mat-sidenav
+    #snav
+    [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [fixedInViewport]="mobileQuery.matches"
+    fixedTopGap="56"
+    [opened]="mobileQuery.matches ? false : true"
+    (opened)="onOpenSidebar()"
+    (closed)="onCloseSidebar()"
+  >
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/create-token']" routerLinkActive="active"> <fa-icon [icon]="faatom"></fa-icon> Create Token </a>
+      <a mat-list-item [routerLink]="['/config-token']" routerLinkActive="active"> <fa-icon [icon]="faGear"></fa-icon> Config Token </a>
+      <a mat-list-item [routerLink]="['/add-liquidity']" routerLinkActive="active"> <fa-icon [icon]="fadollar"></fa-icon> Add Liquidity </a>
+      <a mat-list-item [routerLink]="['/lock-liquidity']" routerLinkActive="active"> <fa-icon [icon]="falock"></fa-icon> Lock Liquidity </a>
+      <a mat-list-item [routerLink]="['/burn-token']" routerLinkActive="active"> <fa-icon [icon]="faburn"></fa-icon> Burn Tokens </a>
+      <a mat-list-item [routerLink]="['/whitelist-blacklist']" routerLinkActive="active">
+        <fa-icon [icon]="fabook"></fa-icon> Whitelist <span class="soon-advise"> SOON</span>
+      </a>
+      <a mat-list-item href="javascript:void(0);">
+        <fa-icon [icon]="facoins"></fa-icon> Launchpad <span class="soon-advise"> SOON</span>
+      </a>
+      <a mat-list-item href="javascript:void(0);">
+        <fa-icon [icon]="facoins"></fa-icon> NFT Collection Generator <span class="soon-advise"> SOON</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content class="main-content" style="overflow-x: hidden">
+    <mat-icon *ngIf="!sidebarClosed" class="menu-item" (click)="snav.toggle()" aria-hidden="false" aria-label="Show sidebar">menu</mat-icon>
+    <mat-icon *ngIf="sidebarClosed" class="menu-item" (click)="snav.toggle()" aria-hidden="false" aria-label="Show sidebar">close</mat-icon>
+
+    <div class="container m-container" [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']">
+      <router-outlet #o="outlet"></router-outlet>
+
+      <footer>
+      </footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

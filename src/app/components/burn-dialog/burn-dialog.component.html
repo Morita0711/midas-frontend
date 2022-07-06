@@ -1,0 +1,45 @@
+<div class="dialog-header">
+  <h4 class="header-title">Burn Tokens</h4>
+</div>
+<div class="dialog-content">
+  <div style="height: 25px"></div>
+
+  <p style="margin: auto; padding-left: 2rem; padding-right: 2rem; color: white">Are you sure you want to <span
+      style="font-weight: bold">burn</span> {{amount}} amout of {{name}}
+    tokens? <br><span style="font-weight: bold">if you burn the tokens they will be lost forever</span>?</p>
+
+  <div *ngIf="isLoading" style="height: 250px"></div>
+  <div *ngIf="isLoading" id="fire-container" class="fire-container">
+    <div class="fire">
+      <div class="fire-left">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-main">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-right">
+        <div class="main-fire"></div>
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-bottom">
+        <div class="main-fire"></div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 50px"></div>
+</div>
+
+<mat-divider class="dialog-divider"></mat-divider>
+
+<div class="dialog-footer">
+  <div style="height: 15px"></div>
+  <button [disabled]="isLoading" color="primary" type="button" mat-raised-button (click)="burn()">
+
+    Burn
+  </button>
+  <button style="margin-left: 5rem; color: white" mat-button (click)="onNoClick()">Cancel</button>
+  <div style="height: 15px"></div>
+
+</div>

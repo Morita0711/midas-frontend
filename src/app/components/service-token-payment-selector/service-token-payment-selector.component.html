@@ -1,0 +1,15 @@
+<mat-form-field appearance="fill" style="text-align: center">
+  <mat-label>Currencies</mat-label>
+  <mat-select #matRef (selectionChange)="OnPaymentTokenSelectChange($event)" [(value)]="currentToken"
+              panelClass="my-select-panel-class">
+    <mat-select-trigger>
+      <img style="width: 25px; height: 25px" [src]="networks[this.networkId].acceptedPaymentTokens[currentToken].image">
+      <span
+        style="margin-left: 5px !important; font-weight: bold; color: white">{{networks[this.networkId].acceptedPaymentTokens[currentToken].symbol}}</span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let paymentToken of acceptedPaymentTokens; let i = index" [id]="paymentToken.address" [attr.data-index]="i" [value]="i">
+      <img style="width: 25px; height: 25px;" alt="payment currency" [src]="paymentToken.image" /> <span
+      style="margin-left: 5px !important; font-weight: bold">{{paymentToken.symbol}}</span>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

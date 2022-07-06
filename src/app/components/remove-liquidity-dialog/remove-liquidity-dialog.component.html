@@ -1,0 +1,64 @@
+<div class="dialog-header">
+  <h4 class="header-title">Remove LP Tokens</h4>
+</div>
+<div class="dialog-content">
+  <div style="height: 25px"></div>
+
+  <mat-card class="lock-liquidity-form-container">
+    <div class="input-label">
+      <span style="font-weight: bold; color: white">LP Tokens Balance</span>
+      <span style="font-weight: bold; color: white">{{lpTokenBalance}}</span>
+    </div>
+    <br>
+    <div class="input-label">
+      <input [disabled]="isLoading" style="color: white" [(ngModel)]="removeLPTokensForm.amount" appTwoDigitDecimaNumber matInput
+             maxlength="16"
+             placeholder="e.g. 1000" (keyup)="LPTokenInputKeyUp()">
+      <button [disabled]="isLoading" class="percentButton" (click)="setLPTokenPercent(25)" color="primary" type="button"
+              mat-raised-button>
+        25%
+      </button>
+      <div style="width: 1rem;">
+      </div>
+      <button [disabled]="isLoading" class="percentButton" (click)="setLPTokenPercent(50)" color="primary" type="button"
+              mat-raised-button>
+        50%
+      </button>
+      <div style="width: 1rem;">
+      </div>
+      <button [disabled]="isLoading" class="percentButton" (click)="setLPTokenPercent(75)" color="primary" type="button"
+              mat-raised-button>
+        75%
+      </button>
+      <div style="width: 1rem;">
+      </div>
+      <button class="percentButton" (click)="setLPTokenPercent(100)" color="primary" type="button"
+              mat-raised-button>
+        100%
+      </button>
+    </div>
+    <br>
+    <mat-slider [disabled]="isLoading" min="0" step="1" thumbLabel (input)="onSlide($event)" #removeLPTokenSlider
+                [displayWith]="formatLabel" max="100"></mat-slider>
+  </mat-card>
+
+  <div style="height: 50px"></div>
+</div>
+
+<mat-divider class="dialog-divider"></mat-divider>
+
+<div class="dialog-footer">
+  <div style="height: 15px"></div>
+  <button style="min-height:36px;min-width:90px;" [disabled]="isLoading || removeLPTokensForm.amount <= 0" color="primary"
+          type="button" mat-raised-button (click)="remove()">
+          <mat-spinner [diameter]="20" *ngIf="isLoading"></mat-spinner>
+    <span *ngIf="!isLoading">Remove</span>
+  </button>
+  <button style="margin-left: 5rem; color: white" mat-button (click)="onNoClick()">Cancel</button>
+  <div style="height: 15px"></div>
+
+</div>
+
+
+
+

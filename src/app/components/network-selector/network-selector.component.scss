@@ -1,0 +1,9 @@
+:host ::ng-deep mat-form-field {
+  margin-top: 3vh;
+  margin-right: 1vw;
+  text-align: center;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  padding: 0.3em 0.3em 0 0.3em;
+}

@@ -1,0 +1,134 @@
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<mat-card class="liquidity-form-container mx-auto">
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field appearance="outline" style="width: 100% !important">
+      <mat-label>Token address</mat-label>
+      <input
+        #lockLiquidityTokenAddress
+        (keyup)="onLockLiquidityTokenAddressKeyup()"
+        matInput
+        maxlength="42"
+        placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+        formControlName="lockLiquidityTokenAddress"
+      />
+      <mat-error *ngIf="!form.controls['lockLiquidityTokenAddress'].valid && form.controls['lockLiquidityTokenAddress'].touched">
+        This field required
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div class="mx-auto text-center mb-4">
+    <span *ngIf="isFetchingLpBalance" class="spinner-border spinner-border-sm" style="color: white; margin: auto !important"></span>
+  </div>
+  <mat-card class="lock-liquidity-form-container">
+    <div class="input-label">
+      <span style="font-weight: bold">TOKEN</span>
+      <span style="font-weight: bold">{{ lpTokenBalance }}</span>
+    </div>
+
+    <div class="input-label">
+      <input
+        [(ngModel)]="lockLiquidityForm.lpAmount"
+        appTwoDigitDecimaNumber
+        matInput
+        maxlength="18"
+        placeholder="e.g. 1000"
+        (keyup)="tokenInputKeyUp()"
+      />
+      <button (click)="setTokenPercent(100)" color="primary" type="button" mat-raised-button>Max</button>
+    </div>
+    <br />
+    <mat-slider
+      min="0"
+      step="1"
+      #lockLpAmountSlider
+      [disabled]="!form.controls['lockLiquidityTokenAddress'].valid"
+      (click)="onClickEvent(form.controls.lockLiquidityTokenAddress.value)"
+      thumbLabel
+      (input)="onSlideLockLP($event)"
+      [displayWith]="formatLabel"
+      max="100"
+    >
+    </mat-slider>
+  </mat-card>
+  <br />
+  <mat-card class="lock-liquidity-form-container">
+    <div class="input-label">
+      <span style="font-weight: bold"> Timelock </span>
+    </div>
+
+    <mat-form-field>
+      <input
+        [disabled]="!form.controls['lockLiquidityTokenAddress'].valid"
+        matInput
+        [matDatetimepicker]="picker"
+        placeholder="Lock until..."
+        (dateInput)="addEvent('input', $event)"
+        (dateChange)="addEvent('change', $event)"
+      />
+      <mat-datetimepicker-toggle matSuffix [for]="picker"></mat-datetimepicker-toggle>
+      <mat-datetimepicker type="datetime" openOnFocus="true" #picker></mat-datetimepicker>
+    </mat-form-field>
+  </mat-card>
+  <br />
+  <div class="liquidity-form-buttons-container">
+    <button *ngIf="!isAllowed" color="primary" type="button" mat-raised-button (click)="approveToken()">
+      <span *ngIf="isApproving" class="spinner-border spinner-border-sm mr-1" style="color: white"></span>
+      <fa-icon *ngIf="isAllowed" [icon]="approveButtonIcon"></fa-icon>
+      {{ approveButtonLabel }}
+    </button>
+    <button
+      [disabled]="!isAllowed || isLocking"
+      color="primary"
+      type="button"
+      mat-raised-button
+      (click)="
+        lockLiquidity(this.form.controls.lockLiquidityTokenAddress.value, this.lockLiquidityForm.locktime, lockLiquidityForm.lpAmount)
+      "
+    >
+      <span *ngIf="isLocking" class="spinner-border spinner-border-sm mr-1" style="color: white"></span>
+      Lock Liquidity
+    </button>
+  </div>
+</mat-card>
+<mat-card class="mt-4 mb-4 lock-liquidity-form-container my-locks" *ngIf="myLocks.length > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h4>My locks</h4>
+      </div>
+    </div>
+    <div style="width: 15px"></div>
+    <mat-card class="row lock-liquidity-form-container" *ngFor="let lock of myLocks" style="margin-bottom: 15px">
+      <div class="col-sm liquidity-locked">
+        <div>
+          <h5><span style="color: #d43322">Locked</span> {{ lock[2] | fromWei }} {{ lock['_tokenName'] }}</h5>
+          <p *ngIf="now < lock[3] * 1000">
+            <fa-icon style="color: #d43322" [icon]="falock"></fa-icon> Unlocks {{ lock[3] * 1000 | date: 'dd/MM/yyyy
+            hh:mm' }}
+          </p>
+          <p *ngIf="now >= lock[3] * 1000">
+            <fa-icon style="color: #00c851" [icon]="falockopen"></fa-icon> <span style="color: #00c851"> Unlocked now!</span>
+          </p>
+        </div>
+        <div>
+          <ctimer-countdown-timer *ngIf="now < lock[3] * 1000" [finishDateString]="lock[3] * 1000"> </ctimer-countdown-timer>
+          <div *ngIf="now >= lock[3] * 1000">
+            <p>Press withdraw to get your tokens.</p>
+          </div>
+        </div>
+        <button
+          [disabled]="now < lock[3] * 1000"
+          (click)="withdraw(lock['id'])"
+          class="remove-lock-btn"
+          color="warn"
+          type="button"
+          mat-raised-button
+        >
+          Withdraw
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</mat-card>

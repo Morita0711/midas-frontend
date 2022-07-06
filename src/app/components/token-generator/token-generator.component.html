@@ -1,0 +1,43 @@
+<div class="container mt-3">
+  <div class="row typewriter" style="text-align: center;">
+    <div class="col-sm">
+      <h1 style="color: white" id="typewriter"></h1>
+    </div>
+  </div>
+</div>
+
+<div id="team" class="container text-center mt-3">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12 mb-3">
+
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Create Token">
+          <div style="height: 15px"></div>
+          <app-create-token></app-create-token>
+        </mat-tab>
+
+        <mat-tab label="Add Liquidity">
+          <div style="height: 15px"></div>
+          <app-add-liquidity></app-add-liquidity>
+        </mat-tab>
+
+        <mat-tab label="Lock Liquidity">
+          <div style="height: 15px"></div>
+          <app-lock-liquidity></app-lock-liquidity>
+        </mat-tab>
+
+
+        <mat-tab label="Burn Tokens">
+          <div style="height: 15px"></div>
+          <app-burn-tokens></app-burn-tokens>
+        </mat-tab>
+
+        <mat-tab label="Whitelist/Blacklist">
+          <div style="height: 15px"></div>
+          <app-whitelist-blacklist></app-whitelist-blacklist>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+

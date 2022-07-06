@@ -1,0 +1,16 @@
+# Ignore artifacts:
+src/app/store/actions/*
+#public/ws
+#src/app/models/*
+#src/@theme/styles/theme.scss
+#src/@theme/styles/colors.scss
+#src/app/mock-api/common/navigation/data.ts
+#src/app/store/reducers/*
+src/app/modules/auth/store/auth.action.ts
+src/app/modules/auth/store/auth.reducer.ts
+#src/app/modules/admin/pages/contacts/models*
+#src/app/modules/admin/pages/contacts/store*
+src/app/modules/admin/pages/clients/store*
+src/app/modules/admin/booking/store*
+src/app/core/user/user.types.ts
+

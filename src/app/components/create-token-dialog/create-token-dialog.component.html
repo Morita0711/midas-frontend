@@ -1,0 +1,61 @@
+<div class="dialog-header">
+  <h4 class="header-title">Token creation Step {{ data.step }}</h4>
+</div>
+<div class="dialog-content">
+  <div style="height: 25px"></div>
+
+  <p *ngIf="!data.isVerified">Token creation in progress...</p>
+  <p *ngIf="!data.isVerified">
+    Please wait until your token is created and verified, the process may take a few more minutes depending on network congestion.
+  </p>
+  <p *ngIf="!data.isVerified"><b>Don't refresh or reload this page!.</b></p>
+  <div *ngIf="data.isCreating && data.isChecking && !data.isVerified">
+    <div *ngIf="data.isCreating && data.isChecking" style="height: 20px"></div>
+    <p><b>Congratulations!</b> Your token has been created, the token verification process will now begin.</p>
+  </div>
+  <div *ngIf="!data.isVerified" style="height: 50px"></div>
+  <span *ngIf="!data.isVerified" class="spinner-border spinner-border-sm mr-1" style="color: white"></span>
+  <div *ngIf="data.isCreating && !data.isChecking" style="height: 50px"></div>
+  <div *ngIf="data.isChecking && data.isVerified">
+    <p><b>Process completed successfully.</b></p>
+    <p><b>Congratulations!</b> Your token has been verified.</p>
+    <div style="height: 15px" *ngIf="data.createdToken.address.length > 0"></div>
+    <span *ngIf="data.createdToken.address.length > 0" style="color: #39c0ed; display: block"> Token created successfully </span>
+
+    <a style="color: #39c0ed" target="_blank" [href]="data.explorerUrl + '/address/' + data.createdToken.address">
+      <b>View in the explorer <fa-icon [icon]="faexternallinkalt"></fa-icon></b
+    ></a>
+    <br *ngIf="data.isVerified" />
+    <!--
+    <a target="_blank" *ngIf="createdTokenAddress && createdTokenAddress.length > 0" class="bnt"
+       [href]="'https://pancakeswap.finance/add/BNB/'+ this.createdTokenAddress" [disabled]="isLoading"
+       color="primary" type="button" mat-raised-button>
+      Add liquidity
+    </a>
+    -->
+    <br *ngIf="isVerified" />
+    <div style="height: 50px"></div>
+  </div>
+  <ng-lottie
+    *ngIf="data.isCreating && data.isChecking"
+    class="lottie-animation-finish"
+    [options]="options"
+    (animationCreated)="animationCreated($event)"
+  >
+  </ng-lottie>
+  <div *ngIf="data.isCreating && data.isChecking && data.isVerified">
+    <div class="add-metamask-btn">
+      <button *ngIf="data.isVerified" (click)="addTokenToMetamask()" color="primary" type="button" mat-raised-button>
+        <fa-icon *ngIf="data.isVerified && data.tokenAddedToMetamask"></fa-icon>
+        {{ addToMetamaskButtonLabel }}
+      </button>
+    </div>
+  </div>
+  <mat-divider class="dialog-divider"></mat-divider>
+
+  <div class="dialog-footer">
+    <div style="height: 15px"></div>
+    <button style="color: white" mat-button (click)="onNoClick()">Close</button>
+    <div style="height: 15px"></div>
+  </div>
+</div>

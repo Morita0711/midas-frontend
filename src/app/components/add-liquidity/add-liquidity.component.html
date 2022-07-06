@@ -1,0 +1,167 @@
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<div style="height: 15px"></div>
+<mat-card class="liquidity-form-container mx-auto">
+  <form [formGroup]="tokenAddressInputFormGroup" class="form-container">
+    <ng-container *ngIf="account$ | async as account">
+      <mat-form-field appearance="outline" style="width: 100% !important">
+        <mat-label>Token address</mat-label>
+        <input
+          #liquidityTokenAddress
+          (keyup)="onLiquidityTokenAddressKeyup()"
+          matInput
+          maxlength="42"
+          placeholder="e.g. 0xB06a4327FF7dB3D82b51bbD692063E9a180b79D9"
+          formControlName="liquidityTokenAddress"
+        />
+        <mat-error
+          *ngIf="
+            !tokenAddressInputFormGroup.controls['liquidityTokenAddress'].valid &&
+            tokenAddressInputFormGroup.controls['liquidityTokenAddress'].touched
+          "
+        >
+          This field required
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+  </form>
+
+  <div class="mx-auto text-center">
+    <span *ngIf="isFetchingLpBalance" class="spinner-border spinner-border-sm" style="color: white; margin: auto !important"></span>
+  </div>
+  <mat-card *ngIf="lpTokenBalance > 0" class="glassContainer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h5>LP Token Balance {{ lpTokenBalance }}</h5>
+        </div>
+        <div class="col-sm remove-liquidity-div">
+          <button (click)="openRemoveLiquidityDialog()" color="primary" type="button" mat-raised-button>Remove</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <br />
+  <ng-container *ngIf="bnbBalance$ | async as bnbBalance">
+    <mat-card class="lock-liquidity-form-container">
+      <div class="input-label">
+        <span style="font-weight: bold; color: white">BNB</span>
+        <span style="font-weight: bold; color: white">{{ bnbBalance }}</span>
+      </div>
+      <br />
+      <div class="input-label">
+        <input
+          style="color: white"
+          [(ngModel)]="addLiquidityForm.bnbAmount"
+          appTwoDigitDecimaNumber
+          matInput
+          maxlength="8"
+          placeholder="e.g. 1000"
+          (keyup)="bnbInputKeyUp()"
+        />
+        <button class="percentButton" (click)="setBnbPercent(25, bnbBalance)" color="primary" type="button" mat-raised-button>25%</button>
+        <div style="width: 1rem"></div>
+        <button class="percentButton" (click)="setBnbPercent(50, bnbBalance)" color="primary" type="button" mat-raised-button>50%</button>
+        <div style="width: 1rem"></div>
+        <button class="percentButton" (click)="setBnbPercent(75, bnbBalance)" color="primary" type="button" mat-raised-button>75%</button>
+        <div style="width: 1rem"></div>
+        <button class="percentButton" (click)="setBnbPercent(100, bnbBalance)" color="primary" type="button" mat-raised-button>100%</button>
+      </div>
+      <br />
+      <mat-slider
+        min="0"
+        step="1"
+        thumbLabel
+        (input)="onSlide($event, bnbBalance)"
+        #addLiquidityBnbSlider
+        [displayWith]="formatLabel"
+        max="100"
+      ></mat-slider>
+    </mat-card>
+  </ng-container>
+
+  <br />
+  <mat-card class="lock-liquidity-form-container">
+    <div class="input-label">
+      <span style="font-weight: bold; color: white">TOKEN</span>
+      <span style="font-weight: bold; color: white">{{ tokenBalance }}</span>
+    </div>
+    <br />
+    <div class="input-label">
+      <input
+        [(ngModel)]="addLiquidityForm.tokenAmount"
+        appTwoDigitDecimaNumber
+        matInput
+        maxlength="8"
+        placeholder="e.g. 1000"
+        (keyup)="tokenInputKeyUp()"
+        style="color: white"
+      />
+      <button
+        [disabled]="tokenBalance === undefined || tokenBalance === 0"
+        (click)="setTokenPercent(25)"
+        color="primary"
+        type="button"
+        mat-raised-button
+      >
+        25%
+      </button>
+      <div style="width: 1rem"></div>
+      <button
+        [disabled]="tokenBalance === undefined || tokenBalance === 0"
+        (click)="setTokenPercent(50)"
+        color="primary"
+        type="button"
+        mat-raised-button
+      >
+        50%
+      </button>
+      <div style="width: 1rem"></div>
+      <button
+        [disabled]="tokenBalance === undefined || tokenBalance === 0"
+        (click)="setTokenPercent(75)"
+        color="primary"
+        type="button"
+        mat-raised-button
+      >
+        75%
+      </button>
+      <div style="width: 1rem"></div>
+      <button
+        [disabled]="tokenBalance === undefined || tokenBalance === 0"
+        (click)="setTokenPercent(100)"
+        color="primary"
+        type="button"
+        mat-raised-button
+      >
+        100%
+      </button>
+    </div>
+    <br />
+    <mat-slider
+      min="0"
+      step="1"
+      [disabled]="!this.tokenAddressInputFormGroup.controls['liquidityTokenAddress'].valid && this.tokenBalance == 0"
+      thumbLabel
+      #slider
+      (click)="onClickEvent(tokenAddressInputFormGroup.controls.liquidityTokenAddress.value)"
+      (input)="onSlideToken($event)"
+      [displayWith]="formatLabel"
+      max="100"
+    ></mat-slider>
+  </mat-card>
+  <br />
+
+  <div class="liquidity-form-buttons-container">
+    <button *ngIf="!isAllowed" color="primary" type="button" mat-raised-button (click)="approveToken()">
+      <span *ngIf="isApproving" class="spinner-border spinner-border-sm mr-1" style="color: white"></span>
+      <fa-icon *ngIf="isAllowed" [icon]="approveButtonIcon"></fa-icon>
+      {{ approveButtonLabel }}
+    </button>
+    <button [disabled]="!isAllowed" color="primary" type="button" mat-raised-button (click)="addLiquidity()">
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1" style="color: white"></span>
+      Add Liquidity
+    </button>
+  </div>
+</mat-card>

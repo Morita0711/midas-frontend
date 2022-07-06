@@ -1,0 +1,148 @@
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #39c0ed;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #39c0ed;
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: red !important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #ffffff !important;
+  // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #39c0ed !important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+  color: red !important;
+  opacity: 0.8 !important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+  caret-color: white !important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+  caret-color: white !important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+  color: rgba(0, 0, 0, .6) !important;
+  // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: red !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: red !important;
+}
+
+
+input {
+  color: white;
+}
+
+span.mat-slide-toggle-content {
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  font-weight: normal;
+}
+
+/* centered columns styles */
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  text-align: center;
+}
+
+mat-error {
+  font-size: 0.9rem;
+}
+
+.mat-panel-title-span {
+  margin: auto;
+  font-size: 1.4rem;
+  color: #39c0ed;
+  font-weight: bold;
+}
+
+#submit-button {
+  color: white;
+}
+
+/*
+#submit-button:hover {
+  background: linear-gradient(-45deg, #ee7752, #ff79ab, #47cfff, #23d5ab) !important;
+  font-size: 1.2rem;
+
+}
+
+*/
+
+.button-label {
+  font-size: 1.2rem !important;
+}
+
+.configurator_container {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+
+button {
+  color: white;
+  font-size: 0.9rem;
+  height: auto;
+  width: auto;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  border-radius: 16px;
+}
+
+input {
+  font-weight: bold !important;
+}
+
+.bnt {
+  color: white;
+  font-size: 0.9rem;
+  height: auto;
+  width: auto;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  border-radius: 16px;
+}
+
+mat-card {
+  border-radius: 16px;
+}
+
+:host ::ng-deep .mat-tab-header {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 16px;
+}
+@media screen and (max-width: 512px) {
+  .typewriter {
+    min-height: 250px;
+  }
+}

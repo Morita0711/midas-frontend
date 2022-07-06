@@ -1,0 +1,316 @@
+/* You can add global styles to this file, and also import other style files */
+
+mat-card {
+  border-radius: 16px !important;
+}
+
+button {
+  border-radius: 8px !important;
+  font-weight: bold !important;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: rgb(50, 24, 132);
+  background: linear-gradient(134deg, rgba(50, 24, 132, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mat-hints {
+  color: #39c0ed;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center !important;
+}
+
+mat-label {
+  color: white;
+}
+
+input {
+  color: #cecece;
+  font-weight: bold !important;
+}
+
+.mat-raised-button[disabled] {
+  background-color: #2c2c2c !important;
+}
+.networks-section {
+  display: flex; /* or inline-flex */
+}
+
+.liquidity-form-container {
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.51);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  width: 60%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+.liquidity-form-container {
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.51);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  width: 60%;
+}
+
+.input-label {
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-direction: row !important;
+}
+
+.liquidity-form-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 100%;
+}
+
+.percentButton {
+  font-weight: bold;
+}
+
+.percent-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 100%;
+}
+
+.lock-liquidity-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  height: 10%;
+
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.11);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+
+  padding: 16px;
+  -moz-border-radius: 16px 16px 16px 16px;
+  -webkit-border-radius: 16px 16px 16px 16px;
+  // border: 1px solid #BEAEE2;
+}
+
+.glassContainer {
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.11);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.buySellTransferContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.51);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.configContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.51);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 0px 15px;
+}
+
+.full-width-field {
+  width: 100%;
+}
+
+.width-field-80 {
+  width: 80%;
+}
+
+.width-field-90 {
+  width: 90% !important;
+}
+
+.width-field-95 {
+  width: 95% !important;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+mat-icon {
+  size: 0.6rem !important;
+  margin-right: 4px;
+}
+
+.mat-tab-label-container {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* SNACKBARS  --------------------------------------------------------------------------------------------------------*/
+/* snackbar background colors */
+.background-green {
+  background-color: #00c851;
+}
+
+.background-blue {
+  background-color: #03a9f4;
+}
+
+.background-red {
+  background-color: #ff4444;
+}
+
+.background-yellow {
+  background-color: #ffa900;
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-indicator::after {
+  color: white !important;
+}
+
+.mat-accordion .mat-expansion-panel:not(.mat-expanded),
+.mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing) {
+  margin-bottom: 20px;
+}
+
+.mat-slider-thumb {
+  background-color: #39c0ed !important;
+}
+
+.mat-slider-thumb-label {
+  background-color: #2f2f2f !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  backdrop-filter: blur(3px) saturate(150%);
+  -webkit-backdrop-filter: blur(3px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.11);
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.mat-form-field-underline {
+  display: none !important;
+}
+
+.mat-selected {
+  background: rgba(0, 196, 255, 0.51) !important;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.mat-option-text {
+  color: white;
+}
+
+.my-select-panel-class {
+  margin-top: 2.5rem !important;
+  background-color: #444444;
+
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  background-color: rgba(17, 25, 40, 0.51);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 16px !important;
+}
+
+.centre {
+  text-align: center !important;
+}
+
+.multiple {
+  background: linear-gradient(-45deg, rgba(178, 62, 206, 1), rgba(255, 21, 229, 1), #47cfff, #23d5ab) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold;
+}
+
+.mat-slider-track-fill {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) !important;
+}
+
+.mat-custom-nav {
+  background: rgba(0, 0, 0, 0) !important;
+  width: 98% !important;
+  border-radius: 16px !important;
+  margin: auto !important;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.percentButton {
+  font-weight: bold;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #6dd7f5;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #39c0ed;
+}
+@media screen and (max-width: 512px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (min-width: 769px) {
+  body {
+    height: 100vh;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
